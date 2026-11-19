@@ -1,0 +1,33 @@
+name: 蜂鸟脚本测试构建
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 还原 Base64 编码的二进制文件
+        run: |
+          for f in $(find . -name '*.b64.part*' -type f | sort); do base="${f%.part*}"; cat "$f" >> "${base}.tmp"; rm "$f"; done
+          for f in $(find . -name '*.b64.tmp' -type f); do base64 -d "$f" > "${f%.b64.tmp}"; rm "$f"; done
+          for f in $(find . -name '*.b64' -type f); do base64 -d "$f" > "${f%.b64}"; rm "$f"; done
+          ls -lh app/libs/ app/src/main/jniLibs/arm64-v8a/ gradle/wrapper/gradle-wrapper.jar app/src/main/assets/fengniao/host-methods.jsonl.gz
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools platforms;android-37 build-tools;37.0.0
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          validate-wrappers: false
+      - name: 构建独立调试模块
+        run: sh ./gradlew :app:assembleDebug -Pfengniao.compileSdk=37 -Pfengniao.targetSdk=37 --no-daemon --no-watch-fs --max-workers=2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FengniaoScripts-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
