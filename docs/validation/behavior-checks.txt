@@ -1,0 +1,8 @@
+example-plugin PASS
+runtime-prelude PASS
+plugin-lifecycle PASS
+async-http PASS
+hook-callback PASS
+
+descriptor resolution PASS
+native callback single-delivery/close PASS

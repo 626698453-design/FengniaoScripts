@@ -1,0 +1,58 @@
+package me.ele.lpd.dynamiclib.magex;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+import ff0.k;
+import me.ele.android.lmagex.container.ContainerParams;
+import me.ele.lpdfoundation.components.a;
+import pj0.d;
+
+public class HBCommonMagexActivity extends a implements d {
+    private void replaceFragment() {
+        ContainerParams containerParams;
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "5")) {
+            iSurgeon.surgeon$dispatch("5", new Object[]{this});
+            return;
+        }
+        this.hbCommonMagexFragment = new HBCommonMagexActivity$b();
+        Bundle bundle = new Bundle();
+        Intent intent = getIntent();
+        if (intent == null) {
+            return;
+        }
+        String stringExtra = intent.getStringExtra("scene_name");
+        this.sceneName = stringExtra;
+        if (TextUtils.isEmpty(stringExtra)) {
+            return;
+        }
+        boolean booleanExtra = intent.getBooleanExtra("mist_page", true);
+        bundle.putString("scene_name", this.sceneName);
+        bundle.putBoolean("mist_page", booleanExtra);
+        String stringExtra2 = intent.getStringExtra("ltracker_original_scheme");
+        if (!TextUtils.isEmpty(stringExtra2)) {
+            Uri uri = Uri.parse(stringExtra2);
+            for (String str : uri.getQueryParameterNames()) {
+                if (!"mist_page".equals(str) && !"scene_name".equals(str)) {
+                    if ("utpage".equals(str)) {
+                        this.utPage = uri.getQueryParameter(str);
+                    } else if (TextUtils.equals(str, "lmagex")) {
+                        String queryParameter = uri.getQueryParameter(str);
+                        if (!TextUtils.isEmpty(queryParameter) && (containerParams = (ContainerParams) JSON.parseObject(queryParameter, ContainerParams.class)) != null) {
+                            bundle.putSerializable(str, containerParams);
+                        }
+                    } else {
+                        bundle.putString(str, uri.getQueryParameter(str));
+                    }
+                }
+            }
+        }
+        this.hbCommonMagexFragment.setArguments(bundle);
+        getSupportFragmentManager().a().n(k.G4, this.hbCommonMagexFragment).j();
+    }
+}

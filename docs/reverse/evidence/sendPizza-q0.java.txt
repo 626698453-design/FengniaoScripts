@@ -1,0 +1,234 @@
+package me.ele.lpd.dynamiclib.magex.adapter;
+
+import android.text.TextUtils;
+import androidx.annotation.Nullable;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.Feature;
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+import com.socks.library.KLog;
+import e71.n;
+import java.util.HashMap;
+import java.util.Map;
+import me.ele.android.lmagex.h;
+import me.ele.hb.framework.network.platform.HBErrorResponse;
+import me.ele.hb.framework.network.platform.HBResponse;
+import me.ele.hb.framework.network.platform.PlatformContentType;
+import me.ele.hb.framework.network.platform.PlatformMethod;
+import me.ele.hb.framework.network.platform.b;
+import me.ele.hb.framework.network.platform.f$a;
+import me.ele.hb.framework.network.xtop.a;
+import sa0.c;
+import sa0.c$a;
+
+public class q0 implements c {
+    private static transient /* synthetic */ ISurgeon $surgeonFlag;
+
+    private JSONObject e(JSONObject jSONObject) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "8")) {
+            return (JSONObject) iSurgeon.surgeon$dispatch("8", new Object[]{this, jSONObject});
+        }
+        if (jSONObject == null) {
+            return null;
+        }
+        try {
+            String string = jSONObject.getString("errmsg");
+            String string2 = jSONObject.getString("msg");
+            if (!TextUtils.isEmpty(string)) {
+                jSONObject.put("errmsg", fs0.c.a(string));
+            }
+            if (!TextUtils.isEmpty(string2)) {
+                jSONObject.put("msg", fs0.c.a(string2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jSONObject;
+    }
+
+    private String f(String str) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "7")) {
+            return (String) iSurgeon.surgeon$dispatch("7", new Object[]{this, str});
+        }
+        if ("knight".equals(str)) {
+            str = "key_hb_order";
+        }
+        if ("httppizza".equals(str)) {
+            str = "PIZZA";
+        }
+        if ("talaris".equals(str)) {
+            str = "host";
+        }
+        return "aiot".equalsIgnoreCase(str) ? "AIOT" : str;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public JSONObject g(HBErrorResponse hBErrorResponse, String str, boolean z) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "3")) {
+            return (JSONObject) iSurgeon.surgeon$dispatch("3", new Object[]{this, hBErrorResponse, str, Boolean.valueOf(z)});
+        }
+        JSONObject jSONObject = new JSONObject();
+        try {
+            jSONObject.put("data", JSON.parseObject(hBErrorResponse.getData()));
+        } catch (Throwable th) {
+            KLog.e("PizzaApi", new Object[]{th});
+            jSONObject.put("data", hBErrorResponse.getData());
+        }
+        jSONObject.put("requestId", hBErrorResponse.getRequestId());
+        jSONObject.put("code", Integer.valueOf(hBErrorResponse.getCode()));
+        jSONObject.put("errorMsg", hBErrorResponse.getMessage());
+        jSONObject.put("statusCode", Integer.valueOf(hBErrorResponse.getHttpCode()));
+        jSONObject.put("errorCode", String.valueOf(hBErrorResponse.getErrorCode()));
+        if (a.e(str)) {
+            jSONObject.put("xtopCode", Integer.valueOf(hBErrorResponse.getXTopCode()));
+        }
+        if (z) {
+            jSONObject.put("responseType", "trailer");
+        }
+        return jSONObject;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public JSONObject h(@Nullable HBResponse hBResponse, String str) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "6")) {
+            return (JSONObject) iSurgeon.surgeon$dispatch("6", new Object[]{this, hBResponse, str});
+        }
+        JSONObject jSONObject = new JSONObject();
+        if (hBResponse != null) {
+            JSONObject object = JSON.parseObject((String) hBResponse.getData());
+            e(object);
+            jSONObject.put("data", object);
+            jSONObject.put("requestId", hBResponse.getRequestId());
+            jSONObject.put("statusCode", Integer.valueOf(hBResponse.getHttpCode()));
+            if (a.e(str)) {
+                jSONObject.put("xtopCode", Integer.valueOf(hBResponse.getXTopCode()));
+            }
+        } else {
+            jSONObject.put("statusCode", 200);
+            if (a.e(str)) {
+                jSONObject.put("xtopCode", 200);
+            }
+        }
+        jSONObject.put("responseType", "trailer");
+        jSONObject.put("errorCode", 0);
+        jSONObject.put("errorMsg", "");
+        return jSONObject;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public JSONObject j(HBResponse hBResponse, String str, boolean z) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "5")) {
+            return (JSONObject) iSurgeon.surgeon$dispatch("5", new Object[]{this, hBResponse, str, Boolean.valueOf(z)});
+        }
+        JSONObject object = JSON.parseObject((String) hBResponse.getData());
+        JSONObject jSONObject = new JSONObject();
+        e(object);
+        jSONObject.put("data", object);
+        jSONObject.put("requestId", hBResponse.getRequestId());
+        jSONObject.put("errorCode", 0);
+        jSONObject.put("errorMsg", "");
+        jSONObject.put("statusCode", Integer.valueOf(hBResponse.getHttpCode()));
+        if (a.e(str)) {
+            jSONObject.put("xtopCode", Integer.valueOf(hBResponse.getXTopCode()));
+        }
+        if (z) {
+            jSONObject.put("responseType", "chunk");
+        }
+        return jSONObject;
+    }
+
+    public Object d(h hVar, Object obj, Map map, c$a c_a) {
+        PlatformMethod platformMethod;
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "2")) {
+            return iSurgeon.surgeon$dispatch("2", new Object[]{this, hVar, obj, map, c_a});
+        }
+        if (obj == null) {
+            c_a.b(hVar, new NullPointerException("PizzaApi params is null"), map);
+            return null;
+        }
+        if (!(obj instanceof JSONObject)) {
+            c_a.b(hVar, i(null, -1, "[PizzaApi] params is not JSONObject", -1), map);
+            return null;
+        }
+        JSONObject jSONObject = ((JSONObject) obj).getJSONObject("data");
+        String string = jSONObject.getString("host");
+        String string2 = jSONObject.getString("urlPath");
+        String string3 = jSONObject.getString("method");
+        String string4 = jSONObject.getString("bizName");
+        Long l = jSONObject.getLong("connectTimeout");
+        Long l2 = jSONObject.getLong("readTimeout");
+        boolean booleanValue = jSONObject.getBooleanValue("callbackOnThread");
+        JSONObject jSONObject2 = jSONObject.getJSONObject("bizParam");
+        JSONObject jSONObject3 = jSONObject.getJSONObject("upload");
+        JSONObject jSONObject4 = jSONObject.getJSONObject("ext_headers");
+        String string5 = jSONObject.getString("contentType");
+        boolean z = jSONObject.getIntValue("streamMode") == 1;
+        f$a f_a = new f$a();
+        if (TextUtils.isEmpty(string)) {
+            f_a.q(f(string4));
+        } else {
+            f_a.p(string);
+        }
+        f_a.b(z);
+        if (l != null) {
+            f_a.f(l.longValue());
+        }
+        if (l2 != null) {
+            f_a.n(l2.longValue());
+        }
+        if (TextUtils.equals(string3, "GET")) {
+            platformMethod = PlatformMethod.GET;
+            f_a.k(jSONObject2 != null ? (Map) JSON.parseObject(jSONObject2.toJSONString(), new q0$a(this), new Feature[0]) : new HashMap());
+        } else {
+            if (!TextUtils.equals(string3, "POST") && !"PUT".equalsIgnoreCase(string3)) {
+                c_a.b(hVar, i(null, -1, "[PizzaApi] method is not support", -1), map);
+                return null;
+            }
+            PlatformMethod platformMethod2 = "POST".equalsIgnoreCase(string3) ? PlatformMethod.POST : PlatformMethod.PUT;
+            if (a.e(string2)) {
+                f_a.c(false);
+                f_a.i(true);
+                f_a.d(a.b(jSONObject.getJSONObject("xtopParam"), jSONObject.getJSONObject("xtopMeta")));
+            } else {
+                f_a.d(jSONObject2);
+            }
+            if (jSONObject3 != null && !jSONObject3.isEmpty()) {
+                f_a.v().b(jSONObject3.getString("name")).d(jSONObject3.getString("type")).c(jSONObject3.getString("filePath")).a(jSONObject3.getString("filename")).e();
+            }
+            platformMethod = platformMethod2;
+        }
+        if (jSONObject4 != null) {
+            f_a.j(jSONObject4);
+        }
+        if (!TextUtils.isEmpty(string5) && TextUtils.equals(string5, "stream")) {
+            f_a.g(PlatformContentType.OCTET_STREAM);
+        }
+        b.b(f_a.m(platformMethod).l(string2).o("mist").e(!booleanValue).h(new q0$b(this, string2, z, c_a, hVar, map, n.d(string2), jSONObject2, string2)).a());
+        return null;
+    }
+
+    public String getName() {
+        ISurgeon iSurgeon = $surgeonFlag;
+        return InstrumentAPI.support(iSurgeon, "1") ? (String) iSurgeon.surgeon$dispatch("1", new Object[]{this}) : "sendPizza";
+    }
+
+    protected JSONObject i(JSONObject jSONObject, int i, String str, int i2) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "4")) {
+            return (JSONObject) iSurgeon.surgeon$dispatch("4", new Object[]{this, jSONObject, Integer.valueOf(i), str, Integer.valueOf(i2)});
+        }
+        JSONObject jSONObject2 = new JSONObject();
+        jSONObject2.put("data", jSONObject);
+        jSONObject2.put("errorCode", Integer.valueOf(i));
+        jSONObject2.put("errorMsg", str);
+        jSONObject2.put("statusCode", Integer.valueOf(i2));
+        return jSONObject2;
+    }
+}

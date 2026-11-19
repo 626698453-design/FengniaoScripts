@@ -1,0 +1,11 @@
+package me.ele.lpdfoundation.network;
+
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+
+public class f {
+    public Object l(String str, Class cls, rx.f fVar) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        return InstrumentAPI.support(iSurgeon, "15") ? iSurgeon.surgeon$dispatch("15", new Object[]{this, str, cls, fVar}) : e(str, fVar).e(cls);
+    }
+}

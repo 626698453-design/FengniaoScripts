@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">蜂鸟脚本</string>
+    <string-array name="xposed_scope"><item>me.ele.crowdsource</item></string-array>
+</resources>

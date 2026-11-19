@@ -1,0 +1,27 @@
+package me.ele.lpd.dynamiclib.magex;
+
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+import com.taobao.monitor.procedure.s;
+import e71.q;
+import me.ele.lpdfoundation.components.a;
+import pj0.d;
+
+public class HBCommonMagexActivity extends a implements d {
+    protected void onCreate(Bundle bundle) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "1")) {
+            iSurgeon.surgeon$dispatch("1", new Object[]{this, bundle});
+            return;
+        }
+        super.onCreate(bundle);
+        q.l(this, false);
+        replaceFragment();
+        if (TextUtils.isEmpty(this.sceneName)) {
+            return;
+        }
+        s.b.a(this).b("fn_pageName", this.sceneName);
+    }
+}

@@ -1,0 +1,15 @@
+package me.ele.lpdfoundation.network;
+
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+
+public abstract class d {
+    protected void setHost() {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "1")) {
+            iSurgeon.surgeon$dispatch("1", new Object[]{this});
+        } else {
+            this.mService = f.d().l(getUrlKey(), getHttpServiceClass(), getNetworkScheduler());
+        }
+    }
+}

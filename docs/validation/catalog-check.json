@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "declaredMethods": 368327,
+  "interfaceMethods": 18526,
+  "nativeMethods": 3938,
+  "networkMethods": 338,
+  "parameterAnnotatedNetworkMethods": 268,
+  "mistReferences": 693,
+  "sha256": "1c3540bd1446133d4161a66750b8475c41633da3e4f4c4037aaf3b05e48d18a5"
+}

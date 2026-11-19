@@ -1,0 +1,83 @@
+package me.ele.lpd.dynamiclib.magex.adapter;
+
+import android.os.SystemClock;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+import com.socks.library.KLog;
+import e71.c;
+import e71.n;
+import java.util.Map;
+import me.ele.android.lmagex.h;
+import me.ele.hb.framework.network.platform.HBErrorResponse;
+import me.ele.hb.framework.network.platform.HBResponse;
+import me.ele.hb.framework.network.platform.a;
+import sa0.c$a;
+import xc0.b;
+
+public class q0$b extends a {
+    private static transient /* synthetic */ ISurgeon $surgeonFlag;
+    private HBResponse a;
+    final /* synthetic */ String b;
+    final /* synthetic */ boolean c;
+    final /* synthetic */ c$a d;
+    final /* synthetic */ h e;
+    final /* synthetic */ Map f;
+    final /* synthetic */ boolean g;
+    final /* synthetic */ JSONObject h;
+    final /* synthetic */ String i;
+    final /* synthetic */ q0 j;
+
+    q0$b(q0 q0Var, String str, boolean z, c$a c_a, h hVar, Map map, boolean z2, JSONObject jSONObject, String str2) {
+        this.j = q0Var;
+        this.b = str;
+        this.c = z;
+        this.d = c_a;
+        this.e = hVar;
+        this.f = map;
+        this.g = z2;
+        this.h = jSONObject;
+        this.i = str2;
+    }
+
+    public void failure(HBErrorResponse hBErrorResponse) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "2")) {
+            iSurgeon.surgeon$dispatch("2", new Object[]{this, hBErrorResponse});
+            return;
+        }
+        KLog.d("PizzaApi", new Object[]{"onFailure the error code is:" + hBErrorResponse.getCode() + ", the error message is:" + hBErrorResponse.getMessage()});
+        long jUptimeMillis = SystemClock.uptimeMillis();
+        JSONObject jSONObjectB = q0.b(this.j, hBErrorResponse, this.b, this.c);
+        this.d.b(this.e, jSONObjectB, this.f);
+        c.b(this.b, SystemClock.uptimeMillis() - jUptimeMillis, false);
+        if (this.g) {
+            n.b(this.b, this.h, jSONObjectB, false);
+        }
+    }
+
+    public void onFinish(b bVar) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "3")) {
+            iSurgeon.surgeon$dispatch("3", new Object[]{this, bVar});
+        } else if (this.c) {
+            this.d.a(this.e, q0.c(this.j, this.a, this.i), this.f);
+        }
+    }
+
+    public void success(HBResponse hBResponse) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        if (InstrumentAPI.support(iSurgeon, "1")) {
+            iSurgeon.surgeon$dispatch("1", new Object[]{this, hBResponse});
+            return;
+        }
+        long jUptimeMillis = SystemClock.uptimeMillis();
+        JSONObject jSONObjectA = q0.a(this.j, hBResponse, this.b, this.c);
+        this.d.a(this.e, jSONObjectA, this.f);
+        c.b(this.b, SystemClock.uptimeMillis() - jUptimeMillis, true);
+        this.a = hBResponse;
+        if (this.g) {
+            n.b(this.b, this.h, jSONObjectA, true);
+        }
+    }
+}

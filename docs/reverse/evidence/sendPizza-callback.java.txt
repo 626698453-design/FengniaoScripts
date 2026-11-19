@@ -1,0 +1,10 @@
+package sa0;
+
+import java.util.Map;
+import me.ele.android.lmagex.h;
+
+public interface c$a {
+    void a(h hVar, Object obj, Map map);
+
+    void b(h hVar, Object obj, Map map);
+}

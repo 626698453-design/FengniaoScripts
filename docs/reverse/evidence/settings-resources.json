@@ -1,0 +1,46 @@
+{
+  "layout": {
+    "field": "Lff0/m;->v1:I",
+    "value": "0x7f0c00b6",
+    "resourceId": "0x7f0c00b6",
+    "packageName": "me.ele.crowdsource",
+    "type": "layout",
+    "name": "dy_view_common_lmagex",
+    "variants": [
+      {
+        "configuration": {
+          "qualifiers": "",
+          "isDefault": true
+        },
+        "value": {
+          "valueType": "STRING",
+          "rawData": 4356,
+          "rawDataHex": "0x00001104",
+          "decodedValue": "res/layout/dy_view_common_lmagex.xml"
+        }
+      }
+    ]
+  },
+  "container": {
+    "field": "Lff0/k;->G4:I",
+    "value": "0x7f0901d3",
+    "resourceId": "0x7f0901d3",
+    "packageName": "me.ele.crowdsource",
+    "type": "id",
+    "name": "container_layout",
+    "variants": [
+      {
+        "configuration": {
+          "qualifiers": "",
+          "isDefault": true
+        },
+        "value": {
+          "valueType": "BOOLEAN",
+          "rawData": 0,
+          "rawDataHex": "0x00000000",
+          "decodedValue": "false"
+        }
+      }
+    ]
+  }
+}

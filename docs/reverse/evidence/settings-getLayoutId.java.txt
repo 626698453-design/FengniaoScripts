@@ -1,0 +1,14 @@
+package me.ele.lpd.dynamiclib.magex;
+
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+import ff0.m;
+import me.ele.lpdfoundation.components.a;
+import pj0.d;
+
+public class HBCommonMagexActivity extends a implements d {
+    protected int getLayoutId() {
+        ISurgeon iSurgeon = $surgeonFlag;
+        return InstrumentAPI.support(iSurgeon, "2") ? ((Integer) iSurgeon.surgeon$dispatch("2", new Object[]{this})).intValue() : m.v1;
+    }
+}

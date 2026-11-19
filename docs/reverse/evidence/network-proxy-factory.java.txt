@@ -1,0 +1,12 @@
+package xc0;
+
+import com.alibaba.surgeon.bridge.ISurgeon;
+import com.alibaba.surgeon.instrument.InstrumentAPI;
+import java.lang.reflect.Proxy;
+
+public class t {
+    public Object e(Class cls) {
+        ISurgeon iSurgeon = $surgeonFlag;
+        return InstrumentAPI.support(iSurgeon, "4") ? iSurgeon.surgeon$dispatch("4", new Object[]{this, cls}) : Proxy.newProxyInstance(cls.getClassLoader(), new Class[]{cls}, new t$a(this));
+    }
+}
