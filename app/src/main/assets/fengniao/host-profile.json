@@ -1,0 +1,111 @@
+{
+  "target": {
+    "packageName": "me.ele.crowdsource",
+    "versionName": "10.11.2",
+    "versionCode": 1247,
+    "sha256": "1c3540bd1446133d4161a66750b8475c41633da3e4f4c4037aaf3b05e48d18a5",
+    "application": "me.ele.hb.launch.crowd.CrowdApplicationContext"
+  },
+  "settings": {
+    "activity": "me.ele.lpd.dynamiclib.magex.HBCommonMagexActivity",
+    "onCreate": "Lme/ele/lpd/dynamiclib/magex/HBCommonMagexActivity;->onCreate(Landroid/os/Bundle;)V",
+    "sceneExtra": "scene_name",
+    "confirmedScene": "hb-settings",
+    "referencedTeamScene": "hb-settings-team",
+    "mistPageExtra": "mist_page",
+    "layout": "res/layout/dy_view_common_lmagex.xml",
+    "layoutId": "0x7f0c00b6",
+    "fragmentContainerName": "container_layout",
+    "fragmentContainerId": "0x7f0901d3",
+    "proof": "assets/hb-settings.mistp:hb-settings/HBUserCenterNavigationBar.mist",
+    "legacyRouteReferenced": "eleme-lpd://settings",
+    "limitations": [
+      "Orange config can select a legacy settings route. Legacy route injection was not confirmed.",
+      "Team scene is referenced in shipped navigation; no shipped hb-settings-team asset was used to verify rendered team settings."
+    ]
+  },
+  "sendPizza": {
+    "class": "me.ele.lpd.dynamiclib.magex.adapter.q0",
+    "constructor": "<init>()V",
+    "entry": "Lme/ele/lpd/dynamiclib/magex/adapter/q0;->d(Lme/ele/android/lmagex/h;Ljava/lang/Object;Ljava/util/Map;Lsa0/c$a;)Ljava/lang/Object;",
+    "sourceEntry": "classes6.dex",
+    "jsonClass": "com.alibaba.fastjson.JSONObject",
+    "requestEnvelope": "data",
+    "callbackInterface": "sa0.c$a",
+    "successMethod": "a",
+    "failureMethod": "b",
+    "callbackSignature": "(Lme/ele/android/lmagex/h;Ljava/lang/Object;Ljava/util/Map;)V",
+    "async": true,
+    "allowedMethodsConfirmed": [
+      "GET",
+      "POST",
+      "PUT"
+    ],
+    "businessAliases": {
+      "knight": "key_hb_order",
+      "httppizza": "PIZZA",
+      "talaris": "host",
+      "aiot": "AIOT"
+    },
+    "requestFields": [
+      "host",
+      "urlPath",
+      "method",
+      "bizName",
+      "bizParam",
+      "connectTimeout",
+      "readTimeout",
+      "callbackOnThread",
+      "upload",
+      "ext_headers",
+      "contentType",
+      "streamMode",
+      "xtopParam",
+      "xtopMeta"
+    ],
+    "responseFields": [
+      "data",
+      "requestId",
+      "errorCode",
+      "errorMsg",
+      "statusCode",
+      "xtopCode",
+      "responseType"
+    ],
+    "note": "Host native network stack resolves authentication, signing, routing, and account state; no credentials were extracted and no business requests were sent."
+  },
+  "serviceProxy": {
+    "singleton": "Lme/ele/lpdfoundation/network/f;->d()Lme/ele/lpdfoundation/network/f;",
+    "factory": "Lme/ele/lpdfoundation/network/f;->l(Ljava/lang/String;Ljava/lang/Class;Lrx/f;)Ljava/lang/Object;",
+    "nativeProxyFactory": "Lxc0/t;->e(Ljava/lang/Class;)Ljava/lang/Object;",
+    "strategy": "Capture service interface Class and native return proxy from confirmed factory; exact indexed-descriptor calls can reuse captured native instance. Do not invent URL keys or schedulers."
+  },
+  "staticCatalog": {
+    "annotatedMethods": 338,
+    "annotationFamilies": {
+      "me.ele.android.network.http": 283,
+      "retrofit2.http": 16,
+      "com.alipay.mobile.framework.service.annotation.OperationType": 39
+    },
+    "mistPacks": 206,
+    "mistTextMembers": 1880,
+    "mistLiteralReferences": 693,
+    "mistUniqueValues": 253,
+    "files": [
+      "annotated-network-apis.json",
+      "mist-endpoint-references.json"
+    ],
+    "limitations": [
+      "This is a static discoverable catalog, not all backend APIs.",
+      "Remotely delivered bundles, computed endpoints, native protocols and runtime hotfixes can add or change interfaces.",
+      "APK-only analysis does not prove server permission, business semantics, safe request parameters, or runtime availability."
+    ],
+    "parameterAnnotations": "Bundled DEX extractor additionally includes parameter annotations; 268 of 338 network methods have parameter annotations."
+  },
+  "validation": {
+    "staticReverseConfirmed": true,
+    "deviceRuntimeValidated": false,
+    "businessRequestsIssued": false,
+    "accountCredentialsExtracted": false
+  }
+}
