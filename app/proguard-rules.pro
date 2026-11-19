@@ -1,0 +1,14 @@
+-keep class h.Hchat.ModuleEntry { *; }
+-keep class h.Hchat.host.** { *; }
+-keep class h.Hchat.hooks.items.script.** { *; }
+-keep class h.Hchat.dexkit.** { *; }
+-keep class h.Hchat.utils.KavaReflector { *; }
+-keep class com.highcapable.kavaref.** { *; }
+-keep class h.Hchat.loader.utils.** { *; }
+-keep class bsh.** { *; }
+-keep class org.luckypray.dexkit.** { *; }
+-keep class com.termux.** { *; }
+-keep class okhttp3.** { *; }
+-keep class okio.** { *; }
+-keep class com.alibaba.fastjson2.** { *; }
+-keep class org.xmlpull.v1.** { *; }

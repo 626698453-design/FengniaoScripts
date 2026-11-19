@@ -1,0 +1,20 @@
+{
+  "packageName": "me.ele.crowdsource",
+  "versionName": "10.11.2",
+  "versionCode": 1247,
+  "sha256": "1c3540bd1446133d4161a66750b8475c41633da3e4f4c4037aaf3b05e48d18a5",
+  "scope": "All declared DEX methods, including bundled libraries; network annotations are static evidence, not server coverage or runtime verification.",
+  "declaredMethods": 368327,
+  "interfaceMethods": 18526,
+  "nativeMethods": 3938,
+  "networkMethods": 338,
+  "dexEntries": [
+    "classes.dex",
+    "classes2.dex",
+    "classes3.dex",
+    "classes4.dex",
+    "classes5.dex",
+    "classes6.dex",
+    "classes7.dex"
+  ]
+}
